@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SR_Education.com</title>
+    <link rel="shortcut icon" href="img/FavIcon.png" type="image/png">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Sofia">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Varela Round', sans-serif;
+            background-image: url('img/study.jpeg');
+            margin-top: 40px;
+            background-position: center;
+            background-size: cover;
+
+        }
+
+        .modal-confirm {
+            color: #636363;
+            width: 550px;
+        }
+
+        .modal-confirm .modal-content {
+            padding: 20px;
+            border-radius: 5px;
+            background-color: rgb(41, 41, 41);
+            border: none;
+        }
+
+        .modal-confirm .modal-header {
+            padding: 0 15px;
+            border-bottom: none;
+            position: relative;
+
+        }
+
+        .modal-confirm h4 {
+            display: inline-block;
+            font-size: 26px;
+        }
+
+        .modal-confirm .close {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
+        .modal-confirm .modal-body {
+            color: rgb(148, 133, 133);
+        }
+
+        .modal-confirm .modal-footer {
+            background: #b4c6ca;
+            border-color: #c8d5db;
+            text-align: right;
+            margin: 0 -20px -20px;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .modal-confirm .btn {
+            color: rgb(230, 221, 221);
+            border-radius: 4px;
+            transition: all 0.4s;
+            border: none;
+            padding: 8px 20px;
+            outline: none !important;
+        }
+
+        .modal-confirm .btn-danger {
+            background: #2e8b3b;
+        }
+
+        .modal-confirm .btn-info:hover,
+        .modal-confirm .btn-info:focus {
+            background: #27a027;
+        }
+
+        .modal-confirm .btn-danger {
+            background: #ebe7e7;
+        }
+
+        .modal-confirm .btn-danger:hover,
+        .modal-confirm .btn-danger:focus {
+            background: #e7e3e3;
+        }
+
+        .modal-confirm .modal-footer .btn+.btn {
+            margin-left: 10px;
+        }
+
+
+        /*-----------------------------------------------*/
+
+        .regform {
+            width: 800px;
+            background-color: rgb(0, 0, 0, 0.6);
+            margin: auto;
+            color: #FFFFFF;
+            padding: 10px 0px 10px 0px;
+            text-align: center;
+            border-radius: 15px 15px 0px 0px;
+        }
+
+        .main {
+            background-color: rgb(0, 0, 0, 0.5);
+            width: 800px;
+            margin: auto;
+        }
+
+        .name {
+            margin-left: 25px;
+            margin-top: 10px;
+            width: auto;
+            color: white;
+            font-size: 18px;
+            font-weight: 700;
+
+        }
+
+        .container {
+
+            text-align: center;
+            margin-top: 8%;
+        }
+
+        .button {
+            width: 150px;
+            height: 50px;
+            border: none;
+            outline: none;
+            color: rgb(255, 255, 255);
+            background: #111;
+            cursor: pointer;
+            position: relative;
+            z-index: 0;
+            border-radius: 10px;
+        }
+
+        .button:before {
+            content: '';
+            background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            background-size: 400%;
+            z-index: -1;
+            filter: blur(5px);
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            animation: glowing 20s linear infinite;
+            opacity: 0;
+            transition: opacity .3s ease-in-out;
+            border-radius: 15px;
+        }
+
+        .button:active {
+            color: rgb(219, 207, 36)
+        }
+
+        .button:active:after {
+            background: transparent;
+        }
+
+        .button:hover:before {
+            opacity: 1;
+        }
+
+        .button:after {
+            z-index: -1;
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgb(52, 125, 209);
+            left: 0;
+            top: 0;
+            border-radius: 10px;
+        }
+
+        @keyframes glowing {
+            0% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 400% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+
+
+
+
+        @media only screen and (max-width: 600px) {
+
+
+
+
+            .regform {
+                width: 300px;
+                background-color: rgba(75, 65, 73, 0.6);
+                color: #FFFFFF;
+                padding: 10px 0px 10px 0px;
+                text-align: center;
+                border-radius: 10px 10px 0px 0px;
+            }
+
+            .main {
+                background-color: rgb(0, 0, 0, 0.5);
+                width: 300px;
+                margin: auto;
+            }
+
+            .forms {
+                padding: 10px;
+
+
+            }
+
+            #name {
+                width: 100%;
+                height: 200px;
+                display: contents;
+
+            }
+
+            .name {
+                margin-left: 0px;
+                margin-top: 0px;
+                color: white;
+                font-size: 12px;
+                font-weight: 700;
+
+            }
+
+            .container {
+
+                text-align: center;
+                margin-top: 15%;
+            }
+
+            .button {
+                width: 190px;
+                height: 50px;
+                border: none;
+                outline: none;
+                margin-block-start: 10px;
+                color: rgb(255, 255, 255);
+                background: #111;
+                cursor: pointer;
+                position: relative;
+                z-index: 0;
+                border-radius: 10px;
+            }
+
+            .button:before {
+                content: '';
+                background: linear-gradient(45deg, #ff0000, #ff7300, #fffb00, #48ff00, #00ffd5, #002bff, #7a00ff, #ff00c8, #ff0000);
+                position: absolute;
+                top: -2px;
+                left: -2px;
+                background-size: 400%;
+                z-index: -1;
+                filter: blur(5px);
+                width: calc(100% + 4px);
+                height: calc(100% + 4px);
+                animation: glowing 20s linear infinite;
+                opacity: 0;
+                transition: opacity .3s ease-in-out;
+                border-radius: 10px;
+            }
+
+            .button:active {
+                color: rgb(219, 207, 36)
+            }
+
+            .button:active:after {
+                background: transparent;
+            }
+
+            .button:hover:before {
+                opacity: 1;
+            }
+
+            .button:after {
+                z-index: -1;
+                content: '';
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background: rgb(4, 26, 51);
+                left: 0;
+                top: 0;
+                border-radius: 10px;
+            }
+
+            @keyframes glowing {
+                0% {
+                    background-position: 0 0;
+                }
+
+                50% {
+                    background-position: 400% 0;
+                }
+
+                100% {
+                    background-position: 0 0;
+                }
+            }
+
+            a:link {
+                color: green;
+                background-color: transparent;
+                text-decoration: none;
+            }
+        }
+
+
+        .modal-confirm {
+            color: #99cf9d;
+            width: auto;
+        }
+
+        .modal-confirm .modal-content {
+            padding: 20px;
+            border-radius: 5px;
+            border: none;
+            background-color: #111;
+        }
+
+        .modal-confirm .modal-header {
+            padding: 0 15px;
+            border-bottom: none;
+            position: relative;
+        }
+
+        .modal-confirm h4 {
+            display: inline-block;
+            font-size: 26px;
+        }
+
+        .modal-confirm .close {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+        }
+
+        .modal-confirm .modal-body {
+            color: #999;
+        }
+
+        .modal-confirm .modal-footer {
+            background: #c7d2d4;
+            border-color: #dcedf5;
+            text-align: right;
+            margin: 0 -20px -20px;
+            border-radius: 0 0 5px 5px;
+        }
+
+        .modal-confirm .btn {
+            color: #fff;
+            border-radius: 4px;
+            transition: all 0.4s;
+            border: none;
+            padding: 8px 20px;
+            outline: none !important;
+        }
+
+        .modal-confirm .btn-sucess {
+            background: #087216;
+        }
+
+        .modal-confirm .btn-sucess,
+        .modal-confirm .btn-sucess:focus {
+            background: #013110;
+        }
+
+        .modal-confirm .btn-danger {
+            background: #eb3939;
+        }
+
+        .modal-confirm .btn-danger:hover,
+        .modal-confirm .btn-danger:focus {
+            background: #e77c69;
+        }
+
+        .modal-confirm .modal-footer .btn+.btn {
+            margin-left: 10px;
+        }
+
+
+        .btnn {
+            background-color: rgb(138, 170, 202);
+            border: none;
+            color: white;
+            margin-top: 20px;
+            padding: 10px 30px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+
+
+        a:link {
+            color: rgb(255, 255, 255);
+        }
+
+        /* visited link */
+        a:visited {
+            color: rgb(16, 51, 16);
+        }
+
+        /* mouse over link */
+        a:hover {
+            color: rgb(192, 110, 151);
+        }
+
+        /* selected link */
+        a:active {
+            color: rgb(109, 109, 204);
+        }
+
+
+        h5 {
+            font-size: 25PX;
+            background: linear-gradient(to right, #194e04 0%, #330867 100%);
+            text-transform: uppercase;
+
+            background-clip: text;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            -moz-text-fill-color: transparent;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Modal HTML -->
+    <div id="myModal" class="modal fade">
+        <div class="modal-dialog modal-confirm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Confirmation</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <p>You Registration to More information provide and PDF download For free BCA Information...
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <a href="https://srtech-3077.github.io/SR_Education/Home.html" class="btn btn-danger">Cancel</a>
+                    <a href="http://sr-education.epizy.com/login.php" class="btn btn-success">Sing up!</a>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div>
+
+            <h5 style="font-family: Tahoma, Verdana, sans-serif;"> <B>Click To oracle database 10g express edition free
+                    download...</B></h5>
+            <button class="btnn"><i class="fa fa-download"></i> <a href="https://drive.google.com/file/d/1jRvM8Y5VBvAh4Qgv6ClM1IkVb07xaGiX/view?usp=sharing"
+                    download="oracle database 10g express edition"> Download</a></button>
+
+        </div>
+
+        <div class="container">
+
+            <div class="regform">
+
+                <h1 style=" font-family: Sofia, sans-serif" ;>SR_Education</h1>
+            </div>
+
+
+
+            <div class="main">
+
+
+                <form class="forms">
+                    <div id="name">
+
+                        <br>
+                        <label class="name">
+                            Bachelor in Computer Application (BCA) is an undergraduate degree course in computer
+                            applications.
+                            With the rapid growth of IT industry in India, the demand of computer professional is
+                            increasing
+                            day by day.
+                            This increasing growth of IT industry has created a lot of opportunities for the computer
+                            graduates.<br><br>I HOPE YOU INTEREST BCA
+                            COURCE
+                        </label>
+                    </div>
+                    <center><br><br><br><br>
+                        <a href="http://sr-education.epizy.com/login.php" style="text-decoration:none;"> <button
+                                class="button" type="button">
+                                <h4 style="color: #FFFFFF;">Registration</h4></a>
+                        </button> &nbsp;&nbsp;&nbsp;
+                        <a href="#myModal" class="trigger-btn" data-toggle="modal" style="text-decoration:none;">
+                            <button class="button" type="button">
+                                <h4 style="color: #FFFFFF;">Visite</h4></a>
+                        </button>
+                </form>
+
+            </div>
+        </div>
+</body>
+
+</html>
